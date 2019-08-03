@@ -1,7 +1,6 @@
-from twisted.internet import reactor
+import scrapy
 from scrapy import Spider, Request
-from scrapy.crawler import CrawlerRunner
-from scrapy.utils.log import configure_logging
+
 from sec_data.sec_data.items import SecDataItem
 
 
@@ -21,21 +20,8 @@ class SecSpider(Spider):
         for row in response.xpath('//*[@class="list"]//tbody/tr'):
             item = SecDataItem()
             str = row.xpath('td[1]/a/text()').get()
-            s = str.split()
-            item['year'] = s[0]
-            item['qtr'] = s[1]
-            item['file_urls'] = row.xpath('td[1]/a/@href').get()
-            print(item)
+            str.split()
+            item['qtr'] = row.xpath('td[1]/a/text()').get()
+            item['qtr'] = str[1]
+            item['link'] = row.xpath('td[1]/a/@href').get()
             yield item
-
-
-configure_logging({'LOG_FORMAT': '%(levelname)s: %(message)s'})
-runner = CrawlerRunner()
-
-d = runner.crawl(SecSpider)
-d.addBoth(lambda _: reactor.stop())
-reactor.run()  # the script will block here until the crawling is finished
-
-if __name__ == '__main__':
-    crawler = SecSpider()
-    print()
