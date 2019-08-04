@@ -67,10 +67,9 @@ ROBOTSTXT_OBEY = True
 #ITEM_PIPELINES = {
 #    'secScrap.pipelines.SecscrapPipeline': 300,
 #}
-# ITEM_PIPELINES = {'scrapy.pipelines.files.FilesPipeline': 1}
 ITEM_PIPELINES = {'secScrap.pipelines.SecscrapPipeline': 1}
 DOWNLOAD_TIMEOUT = 1200
-FILES_STORE = '../../output/'
+FILES_STORE = 'output/'
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html
