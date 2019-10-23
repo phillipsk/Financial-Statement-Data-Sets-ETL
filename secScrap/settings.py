@@ -71,7 +71,7 @@ ROBOTSTXT_OBEY = True
 ITEM_PIPELINES = {'secScrap.pipelines.SecscrapPipeline': 1}
 DOWNLOAD_TIMEOUT = 1200
 # FILES_STORE = 'output/'
-FILES_STORE = 's3://sec-dera-s3/feeds/'
+FILES_STORE = 's3://sec-output/'
 # TODO: Temporary AWS Access Keys
 AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
 AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")

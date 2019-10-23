@@ -21,7 +21,9 @@ class SecscrapPipeline(FilesPipeline):
     def file_path(self, request, response=None, info=None):
         url = request.url
         media_ext = os.path.splitext(request.url)[1]
-        return 'full/%s%s' % (request.meta['filename'], media_ext)
+        v = '%s%s' % (request.meta['filename'], media_ext)
+        v = v.replace(' ', '')
+        return v
 
     # def process_item(self, item, spider):
     #     return item
