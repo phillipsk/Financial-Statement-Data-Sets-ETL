@@ -8,6 +8,7 @@
 #     https://docs.scrapy.org/en/latest/topics/settings.html
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
+import os
 
 BOT_NAME = 'secScrap'
 
@@ -69,7 +70,11 @@ ROBOTSTXT_OBEY = True
 #}
 ITEM_PIPELINES = {'secScrap.pipelines.SecscrapPipeline': 1}
 DOWNLOAD_TIMEOUT = 1200
-FILES_STORE = 'output/'
+# FILES_STORE = 'output/'
+FILES_STORE = 's3://sec-output/'
+# TODO: Temporary AWS Access Keys
+AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
+AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html
