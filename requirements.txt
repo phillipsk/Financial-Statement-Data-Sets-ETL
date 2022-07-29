@@ -1,4 +1,4 @@
-Scrapy==1.7.2
+Scrapy==2.6.2
 boto3==1.9.210
 botocore==1.12.210
 docutils==0.15.2
